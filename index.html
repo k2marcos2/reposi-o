@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cautela – Policial</title>
+<link rel="stylesheet" href="css/policia.css">
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Cautela de Armamento</h2>
+  
+  <form id="formPolicial" method="POST" action="https://script.google.com/macros/s/AKfycbxOuh7FHIT6gWWIzbnjovkZwAJ-6PTKf0KregmF1P6raS4upCyPG6mOd5ko1r1K3tav/exec" target="retorno">
+    
+    <label>Data</label>
+    <input type="date" name="data" id="dataHoje" required>
+    
+    <div class="row">
+        <input type="text" name="graduacao" placeholder="Graduação" required>
+        <input type="text" name="rg" placeholder="RG" required>
+    </div>
+    <label>Nome Completo</label>
+    <input type="text" name="nome" required>
+
+    <div class="checkbox-group">
+        <label><input type="checkbox" name="pistola" value="SIM"> Pistola</label>
+        <label><input type="checkbox" name="colete" value="SIM"> Colete</label>
+        <label><input type="checkbox" name="radio_ht" value="SIM"> Rádio HT</label>
+    </div>
+
+    <div class="row">
+       <input type="text" name="arma_longa" placeholder="Arma Longa">
+       <input type="text" name="diversos" placeholder="Munições/Outros">
+    </div>
+    
+    <label>Destino</label>
+    <input type="text" name="destino" required>
+
+    <label>Assinatura do Policial</label>
+    <div class="canvas-wrapper">
+      <canvas id="canvasPolicial"></canvas>
+    </div>
+    <input type="hidden" name="assinatura_policial" id="inputAssinaturaPolicial">
+
+    <button type="button" class="btn-clear" onclick="limparAssinatura()">Limpar Assinatura</button>
+    <button type="submit" class="btn-submit">FINALIZAR CAUTELA</button>
+
+  </form>
+
+  <div id="resultado" class="resultado-box" style="display:none;"></div>
+  <iframe name="retorno" id="retorno" style="display:none;"></iframe>
+</div>
+
+<script src="js/policial.js"></script>
+<script>document.getElementById('dataHoje').valueAsDate = new Date();</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armeiro - Confirmação</title>
+<style>
+  body { font-family: sans-serif; padding: 20px; background: #f0f2f5; }
+  .box { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  input, button { width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }
+  canvas { border: 1px dashed #ccc; width: 100%; height: 200px; background: #fff; }
+  .aviso { font-size: 0.9em; color: #666; margin-bottom: 5px; }
+  #resultado { margin-top: 15px; font-weight: bold; text-align: center; }
+  .sucesso { color: green; }
+  .erro { color: red; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+<div class="box">
+  <h2>Armeiro - Recebimento</h2>
+  
+  <form id="formArmeiro" method="POST" action="https://script.google.com/macros/s/AKfycbxOuh7FHIT6gWWIzbnjovkZwAJ-6PTKf0KregmF1P6raS4upCyPG6mOd5ko1r1K3tav/exec" target="retorno">
+    
+    <label>ID da Cautela (UUID)</label>
+    <input type="text" name="id_cautela" placeholder="Cole o código aqui" required>
+
+    <label>Data de Devolução</label>
+    <input type="date" name="data_devolucao" id="dataHoje" required>
+
+    <p class="aviso">Assinatura do Armeiro:</p>
+    <canvas id="assinaturaArmeiro"></canvas>
+    
+    <input type="hidden" name="assinatura_armeiro" id="assinatura_armeiro">
+
+    <button type="button" onclick="limpar()">Limpar Assinatura</button>
+    <button type="submit" id="btnConfirmar">Confirmar Recebimento</button>
+  </form>
+
+  <div id="resultado"></div>
+  <iframe name="retorno" id="retorno" style="display:none;"></iframe>
+</div>
+
+<script src="js/armeiro.js"></script>
+<script>document.getElementById('dataHoje').valueAsDate = new Date();</script>
+</body>
+</html>
